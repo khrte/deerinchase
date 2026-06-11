@@ -1,59 +1,173 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Nil CSS template for Neocities</title>
         <meta name="author" content="[your name here]">
         <meta name="description" content="[write about your site here]">
-        <link rel="stylesheet" href="css/site.css">
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
     </head>
+    <script type="text/javascript">
+// <![CDATA[
+var speed=33; // lower number for faster
+var drops=100; // number of 'drops'
+var colour="#999"; // colour of drops (generally grey!)
+
+/***************************\
+*   Rainy Afternoon Effect  *
+*(c)2011-13 mf2fm web-design*
+*  http://www.mf2fm.com/rv  *
+* DON'T EDIT BELOW THIS BOX *
+\***************************/
+
+var flks=new Array();
+var flkx=new Array();
+var flky=new Array();
+var fldy=new Array();
+var swide, shigh, boddie;
+var ie_version=(navigator.appVersion.indexOf("MSIE")!=-1)?parseFloat(navigator.appVersion.split("MSIE")[1]):false;
+
+function addLoadEvent(funky) {
+  var oldonload=window.onload;
+  if (typeof(oldonload)!='function') window.onload=funky;
+  else window.onload=function() {
+    if (oldonload) oldonload();
+    funky();
+  }
+}
+
+addLoadEvent(storm);
+
+function storm() { if (document.getElementById) {
+  var r1, r2;
+  boddie=document.createElement("div");
+  boddie.style.position="fixed";
+  boddie.style.top="0px";
+  boddie.style.left="0px";
+  boddie.style.width="1px";
+  boddie.style.height="1px";
+  boddie.style.overflow="visible";
+  boddie.style.backgroundColor="transparent";
+  document.body.appendChild(boddie);
+  set_width();
+  for (var i=0; i<drops; i++) {
+    flks[i]=createDiv(16, 2, "transparent");
+    r1=createDiv(6, 2, colour);
+    r1.style.top="10px";
+    r1.style.left="0px";
+    flks[i].appendChild(r1);
+    r2=createDiv(10, 2, colour);
+    r2.style.top="0px";
+    r2.style.left="0px";
+    if (ie_version && ie_version<10) r2.style.filter="alpha(opacity=25)";
+    else r2.style.opacity=0.25;
+    flks[i].appendChild(r2);
+    flkx[i]=2*Math.floor(Math.random()*swide/2);
+    flky[i]=Math.floor(Math.random()*shigh);
+    fldy[i]=2+Math.floor(Math.random()*4);
+    flks[i].style.left=flkx[i]+"px";
+    flks[i].style.top=flky[i]+"px";
+    boddie.appendChild(flks[i]);
+  }
+  setInterval("cats_and_dogs()", speed);
+}}
+
+function createDiv(height, width, colour) {
+  var div=document.createElement("div");
+  div.style.position="absolute";
+  div.style.height=height+"px";
+  div.style.width=width+"px";
+  div.style.overflow="hidden";
+  div.style.backgroundColor=colour;
+  return (div);
+}
+
+window.onresize=set_width;
+function set_width() {
+  var sw_min=999999;
+  var sh_min=999999;
+  if (document.documentElement && document.documentElement.clientWidth) {
+    sw_min=document.documentElement.clientWidth;
+    sh_min=document.documentElement.clientHeight;
+  }
+  if (typeof(self.innerWidth)!="undefined" && self.innerWidth) {
+    if (self.innerWidth<sw_min) sw_min=self.innerWidth;
+    if (self.innerHeight<sh_min) sh_min=self.innerHeight;
+  }
+  if (document.body.clientWidth) {
+    if (document.body.clientWidth<sw_min) sw_min=document.body.clientWidth;
+    if (document.body.clientHeight<sh_min) sh_min=document.body.clientHeight;
+  }
+  if (sw_min==999999 || sh_min==999999) {
+    sw_min=800;
+    sh_min=600;
+  }
+  swide=sw_min-2;
+  shigh=sh_min;
+}
+
+function cats_and_dogs(c) {
+  var i, x, o=0;
+  for (i=0; i<drops; i++) {
+    flky[i]+=fldy[i];
+    if (flky[i]>=shigh-16) {
+	  flky[i]=-16;
+	  fldy[i]=2+Math.floor(Math.random()*4);
+	  flkx[i]=2*Math.floor(Math.random()*swide/2);
+	  flks[i].style.left=flkx[i]+"px";
+	}
+	flks[i].style.top=flky[i]+"px";
+  }
+}
+// ]]>
+</script>
     <body>
         
     <header>
-        <h1>a window into the void</h1>
+        <h1>DEERINCHASE</h1>
     </header>
         
     <nav>
         <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#link1">Link 1</a></li>
-        <li><a href="#link2">Link 2</a></li>
-        <li><a href="#link3">Link 3</a></li>
+        <li><a href="illus.html">Illustration and Concept Work</a></li>
+        <li><a href="3D.html">3D Work</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About Me</a></li>
         </ul>
     </nav>
         
-    <div id="conten">
+    <div id="content">
         
-    <div id="sidebar">
-        <div id="avatar">
-            <img src="img/icon.png" alt="my icon">
-        </div>
+        <div id="sidebar">
+            <div id="avatar">
+                <img src="images/icon.png" alt="my icon">
+            </div>
         
-        <div id="bio">
-            <p>Nil - the girl who was left behind<br>
-            p: she/her</p>
-        </div>
+            <div id="bio">
+                <p>Nil - the girl who was left behind<br>
+                p: she/her</p>
+            </div>
         
-        <ul>
-            <li><a href="#link4">Link 4</a></li>
-            <li><a href="#link5">Link 5</a></li>
-            <li><a href="#link6">Link 6</a></li>
-        </ul>
-    </div>   
+            <ul>
+                <li><a href="https://deerinchase.tumblr.com/">Tumblr</a></li>
+                <li><a href="https://www.instagram.com/deerinchase/">Instagram</a></li>
+                <li><a href="#link6">Artstation</a></li>
+            </ul>
+        </div>   
         
     <main>
         
         <div class="prose">
         
-        <h1>welcome to my site!</h1>
-        <p>this is placeholder text!</p>
-        <p>write about yourself and what's on your website! you can say anything!! it's your website!!!! brag about your favorite things idk, just have fun hehe.</p>
+        <h1>Welcome!</h1>
+        <p>I'm Kaz Harte, or DeerInChase. Game Design and Art student from the SF Bay Area.</p>
+        <p>Click on the username up top to get back to the home page.</p>
         <p>here's an <a href="https://nomnomnami.itch.io/her-tears-were-my-light" target="_blank">example link</a>. (it goes to the game Nil is from!)</p>
         
-        <h2>section 2</h2>
+        <h2>Perhaps somewhere here there is a carosel of my work</h2>
         <div class="img-right">
-            <img src="img/nil.png" alt="it's nil">
+            <img src="images/nil.png" alt="it's nil">
         </div>
         <p>here's where you can put some other text. very exciting.</p>
         <p>remember to replace the links with pages you want to show people!</p>
@@ -75,6 +189,6 @@
         
     </div>
         
-    <footer>© 2024 [your name here]</footer>
+    <footer>© 2026 DeerInChase</footer>
     </body>
 </html>

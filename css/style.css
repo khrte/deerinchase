@@ -1,0 +1,282 @@
+/* these are the main colors and header image
+   replace them with anything you want! */
+
+
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap" rel="stylesheet">');
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Special+Elite&display=swap" rel="stylesheet">');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
+
+
+:root {
+    --site-bg: url('images/bg-image');
+    --main-bg: url('https://64.media.tumblr.com/8866eb50758a93c83421adf50108537d/0dfde8a1538faa9d-e4/s100x200/ffd71df9009f1adb2956fde9a3c9d5d3d354f600.pnj');
+    --gradient-bg: linear-gradient(0deg, #ffffff 0%, #ffffff 33%, #ffffff 90%);
+    --accent-color: green;
+    --link-color: rgb(96, 162, 62);
+    --bg-color: white;
+    --text-color: black;
+    --text-color2: black;
+    --favorite-color: black;
+    --new-bg: url('https://i.pinimg.com/736x/8b/af/3c/8baf3c9a01ffc395e354572ea0d05e45.jpg')
+}
+/* this theme mostly uses default css colors, but you can get hex codes from sites like this:
+   https://palettes.shecodes.io/
+   i just looked up "css color templates" to find that link! */
+
+/* this applies to all the content */
+* {
+    color: var(--text-color);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+/* custom scrollbars don't appear for all browsers, but i like setting them anyway */
+    scrollbar-color: var(--favorite-color) var(--bg-color);
+    scrollbar-width: thin;
+}
+/* this is for when you select text on the page */
+::selection {
+    background: var(--favorite-color);
+    color: var(--bg-color);
+}
+
+html {scroll-behavior: smooth;}
+
+body {
+    margin: 0;
+    background-color: var(--bg-color);
+    background-image: url("");
+/* you can add a background-position if you don't want it to be top left! this one is set to not tile */
+    background-repeat: no-repeat;
+}
+/* i think having better line spacing helps text to be more readable, but you can remove it if you want */
+p {line-height: 1.5em;
+    font-family: "Special Elite";
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+/* this is your site title displayed at the top of the page */
+header > h1 {
+    margin: 1em auto;
+    max-width: 960px;
+    
+/* you can change the text-align to center or right if you want it placed differently */
+    text-align: left;
+    color: var(--text-color2);
+}
+
+h2 {
+    font-family: "Cinzel", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+
+}
+
+nav {
+    padding: 0 1em 1em 1em;
+    font-weight: bold;
+
+}
+
+nav ul {
+    max-width: 960px;
+    margin: auto;
+    line-height: 3rem;
+/* this stuff makes it wrap around on mobile */
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+/* this line takes away the dot in front of the list items */
+    list-style-type: none;
+/* list items have default padding but we don't need it for these */
+    padding-left: 0;
+/* and this spaces out the buttons so they're not touching */
+    justify-content: space-around;
+}
+nav li a {
+    background-color: white;
+    border: 1px solid var(--favorite-color);
+    padding: .5em 3em;
+/* this takes away the link underline */
+    text-decoration: none;
+/* and this part is animation! */
+    transition: color 400ms ease-out, border-color 400ms ease-out;
+    font-family: "Special Elite";
+}
+nav li a:hover {
+    border: 1px solid var(--accent-color);
+}
+
+a {
+    color: var(--link-color);
+    
+    transition: color 400ms ease-out;
+}
+a:visited {
+    color: black;
+}
+a:hover {
+    color: green;
+}
+
+/* you can change this to lots of things. i picked a star! */
+ul { list-style-type: "✦ "; }
+
+#sidebar {
+    background-image: var(--new-bg);
+    border: 1px solid var(--favorite-color);
+    min-width: 220px;
+}
+
+#avatar {
+/* image size is 160px so i made its container a little bigger to fit the borders */
+    margin: 1em auto;
+    max-width: 164px;
+    max-height: 164px;
+}
+#avatar img {
+    background: var(--bg-color);
+    max-width: 160px;
+    border: 1px solid var(--favorite-color);
+    box-shadow: var(--accent-color) 0 0 4px;
+}
+
+#bio {
+    font-size: smaller;
+    margin: 1em;
+    background: var(--bg-color);
+    border: 1px solid var(--favorite-color);
+    box-shadow: var(--accent-color) 0 0 4px;
+}
+#bio p {
+    margin: 1em;
+    color: var(--text-color2);
+}
+
+#content {
+    display: flex;
+    max-width: 960px;
+    margin: auto;
+}
+
+main {
+    background-image: var(--main-bg);
+    background-repeat: repeat;
+    image-rendering: pixelated;
+    max-width: 937px;
+    margin: auto;
+    border: 1px solid black;
+    color: var(--accent-color);
+    max-height: 600px;
+   
+    overflow:auto;
+}
+
+.prose {
+/* i couldn't put padding on main without it cutting off the background, so the padding is here... sorry if this extra class is a little inconvenient */
+    background: var(--gradient-bg);
+    margin: 0;
+    padding: 1em;
+}
+
+/* made this a class so i can change it to be centered on mobile */
+.img-right { float: right; }
+
+footer {
+    text-align: center;
+    font-size: small;
+    padding: 1em;
+}
+
+/* these are the mobile styles! */
+@media only screen and (max-width: 800px) {
+    #content {
+        flex-wrap: wrap;
+    }
+    #sidebar {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding-top: 2em;
+    }
+    #avatar {margin: 0 1em;}
+    #bio {width: 50%;}
+    #sidebar ul {   
+        margin: 0 1em;
+        display: flex;
+        flex-wrap: wrap;
+        line-height: 2em;
+        padding-left: 0;
+    }
+    #sidebar li {
+        margin: .3em 1em;
+    }
+    main {
+/* remove scrollbar for mobile */
+        max-height: fit-content;
+    }
+    .img-right {
+        float: none;
+        text-align: center;
+    }
+}
+
+
+
+.lace {
+  position: relative;
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 40px;
+  border: 80px solid transparent;
+  border-image-source: url(/images/graphics/red-lace.png);
+  border-image-slice: 200;
+  border-image-repeat: round;
+  border-image-outset: 0px;
+      filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.8));
+}
+
+.doll {
+  position: fixed;
+  bottom: -140px;
+  right: -130px;
+  width: 530px;
+  height: auto;
+  z-index: 3;
+  transition: ease-in-out 0.5s;
+  -webkit-transition: ease-in-out 0.5s;
+  -moz-transition: ease-in-out 0.5s;
+  -o-transition: ease-in-out 0.5s;
+  -ms-transition: ease-in-out 0.5s;
+  transition: all ease-in-out 0.2s;
+}
+
+.doll:hover {
+  transform: translateY(10px);
+  z-index: 4;
+  cursor: var(--cursor-pointer);
+}
+
+
+.doll2 {
+  position: fixed;
+  bottom: -140px;
+  left: -130px;
+  width: 530px;
+  height: auto;
+  z-index: 3;
+  transition: ease-in-out 0.5s;
+  -webkit-transition: ease-in-out 0.5s;
+  -moz-transition: ease-in-out 0.5s;
+  -o-transition: ease-in-out 0.5s;
+  -ms-transition: ease-in-out 0.5s;
+  transition: all ease-in-out 0.2s;
+}
+
+.doll2:hover {
+  transform: translateY(10px);
+  z-index: 4;
+  cursor: var(--cursor-pointer);
+}
